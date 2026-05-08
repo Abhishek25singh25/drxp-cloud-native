@@ -1,0 +1,19 @@
+.wishlist-page, .profile-page { padding-top: 100px; padding-bottom: 60px; }
+.wishlist-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+
+.profile-layout { display: grid; grid-template-columns: 1fr 240px; gap: 32px; margin-top: 28px; align-items: start; }
+.profile-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 20px; }
+.profile-section h3 { font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+.profile-quick-links { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; }
+.profile-quick-links h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--white-muted); margin-bottom: 12px; }
+.pql-item { display: block; padding: 10px 12px; font-size: 13px; color: var(--white-dim); border-radius: var(--radius); transition: all 0.12s; }
+.pql-item:hover { background: var(--surface2); color: var(--white); }
+
+@media (max-width: 900px) {
+  .wishlist-grid { grid-template-columns: repeat(2, 1fr); }
+  .profile-layout { grid-template-columns: 1fr; }
+  .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+}
