@@ -1,0 +1,44 @@
+name: Docker Image Scan
+
+on:
+  workflow_call:
+    inputs:
+      backend_image:
+        type: string
+        required: true
+
+      frontend_image:
+        type: string
+        required: true
+
+      tag:
+        type: string
+        required: false
+        default: latest
+    
+    secrets:
+      DOCKER_USERNAME:
+        required: true
+
+jobs:
+  image-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Backend Image scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/${{ inputs.backend_image }}:${{ inputs.tag }}
+          format: table
+          exit-code: "1"
+          severity: CRITICAL
+          ignore-unfixed: true
+
+      - name: Frontend Image Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ secrets.DOCKER_USERNAME }}/${{ inputs.frontend_image }}:${{ inputs.tag }}
+          format: table
+          exit-code: "1"
+          severity: CRITICAL
+          ignore-unfixed: true
+

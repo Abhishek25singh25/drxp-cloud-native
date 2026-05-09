@@ -1,0 +1,36 @@
+name: Dependency Scan
+
+on:
+  workflow_call:
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v4
+
+        - name: Setup Node
+          uses: actions/setup-node@v4
+          with:
+            node-version: "20"
+
+        - name: Install backend dependencies
+          working-directory: ./backend
+          run: npm install
+
+        - name: Install frontend dependencies
+          working-directory: ./frontend
+          run: npm install
+
+        - name : Npm audit backend
+          working-directory: ./backend
+          run: npm audit
+
+        - name : Npm audit frontend
+          working-directory: ./frontend
+          run: npm audit
+
+
+
